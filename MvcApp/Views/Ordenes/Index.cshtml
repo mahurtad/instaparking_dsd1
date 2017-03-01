@@ -1,0 +1,58 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<h3>Listar Ordenes</h3>
+    <div>
+@using (Html.BeginForm("Buscar", "Ordenes"))
+{
+    <input type="text"name="criterio" />
+    <input type="submit"name="Buscar" />
+    <br />
+        <input type="radio"name="condicion" value="Todas" checked="true" />
+        <span>Todas</span>
+        <input type="radio"name="condicion" value="PorCodigo"/>
+        <span>Por Codigo Proveedor</span>
+        <input type="radio"name="condicion" value="PorEstado"/>
+        <span>Por Estado</span>
+}
+
+<table cellpading="2" cellspacing="2" border="1">
+<tr>
+<th>Numero</th>
+<th>Fecha de orden</th>
+<th>Fecha de Atencion</th>
+<th>Razon Social</th>
+<th>Distrito</th>
+<th>Direccion</th>
+<th>Estado</th>
+</tr>
+@foreach (var or in ViewBag.ListarOrdenes)
+{
+    <tr>
+    <th>@or.NumOco</th>
+    <th>@or.FechaOco.ToString("dd/MM/yyyy")</th>
+    <th>@or.FecAte.ToString("dd/MM/yyyy")</th>
+    <th>@or.RazonProv</th>
+    <th>@or.DistrProv</th>
+    <th>@or.DireccionProv</th>
+    <th>@or.EstaOco</th>
+    </tr>
+}
+
+</table>
+
+
+</body>
+</html>
+    </div>
+</body>
+</html>

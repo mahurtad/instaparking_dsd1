@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="VentasLeonModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="VentasLeonModelStoreContainer">
+          <EntitySet Name="Tb_Distrito" EntityType="VentasLeonModel.Store.Tb_Distrito" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tb_Orden_Compra" EntityType="VentasLeonModel.Store.Tb_Orden_Compra" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tb_Proveedor" EntityType="VentasLeonModel.Store.Tb_Proveedor" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__Tb_Orden___Cod_p__4316F928" Association="VentasLeonModel.Store.FK__Tb_Orden___Cod_p__4316F928">
+            <End Role="Tb_Proveedor" EntitySet="Tb_Proveedor" />
+            <End Role="Tb_Orden_Compra" EntitySet="Tb_Orden_Compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Provee__Cod_d__440B1D61" Association="VentasLeonModel.Store.FK__Tb_Provee__Cod_d__440B1D61">
+            <End Role="Tb_Distrito" EntitySet="Tb_Distrito" />
+            <End Role="Tb_Proveedor" EntitySet="Tb_Proveedor" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Tb_Distrito">
+          <Key>
+            <PropertyRef Name="Cod_dis" />
+          </Key>
+          <Property Name="Cod_dis" Type="nvarchar" Nullable="false" MaxLength="3" />
+          <Property Name="Nom_dis" Type="nvarchar" Nullable="false" MaxLength="25" />
+          <Property Name="Cod_ven" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Tb_Orden_Compra">
+          <Key>
+            <PropertyRef Name="Num_oco" />
+          </Key>
+          <Property Name="Num_oco" Type="nvarchar" Nullable="false" MaxLength="5" />
+          <Property Name="Fec_oco" Type="datetime" Nullable="false" />
+          <Property Name="Cod_prv" Type="nvarchar" Nullable="false" MaxLength="4" />
+          <Property Name="Fec_ate" Type="datetime" />
+          <Property Name="Est_oco" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tb_Proveedor">
+          <Key>
+            <PropertyRef Name="Cod_prv" />
+          </Key>
+          <Property Name="Cod_prv" Type="nvarchar" Nullable="false" MaxLength="4" />
+          <Property Name="Raz_soc_prv" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="Dir_prv" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="Tel_prv" Type="nvarchar" MaxLength="8" />
+          <Property Name="Cod_dis" Type="nvarchar" Nullable="false" MaxLength="3" />
+          <Property Name="Rep_ven" Type="nvarchar" Nullable="false" MaxLength="30" />
+        </EntityType>
+        <Association Name="FK__Tb_Orden___Cod_p__4316F928">
+          <End Role="Tb_Proveedor" Type="VentasLeonModel.Store.Tb_Proveedor" Multiplicity="1" />
+          <End Role="Tb_Orden_Compra" Type="VentasLeonModel.Store.Tb_Orden_Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Proveedor">
+              <PropertyRef Name="Cod_prv" />
+            </Principal>
+            <Dependent Role="Tb_Orden_Compra">
+              <PropertyRef Name="Cod_prv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Provee__Cod_d__440B1D61">
+          <End Role="Tb_Distrito" Type="VentasLeonModel.Store.Tb_Distrito" Multiplicity="1" />
+          <End Role="Tb_Proveedor" Type="VentasLeonModel.Store.Tb_Proveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Distrito">
+              <PropertyRef Name="Cod_dis" />
+            </Principal>
+            <Dependent Role="Tb_Proveedor">
+              <PropertyRef Name="Cod_dis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VentasLeonModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="VentasLeonEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Tb_Distrito" EntityType="VentasLeonModel.Tb_Distrito" />
+          <EntitySet Name="Tb_Orden_Compra" EntityType="VentasLeonModel.Tb_Orden_Compra" />
+          <EntitySet Name="Tb_Proveedor" EntityType="VentasLeonModel.Tb_Proveedor" />
+          <AssociationSet Name="FK__Tb_Provee__Cod_d__440B1D61" Association="VentasLeonModel.FK__Tb_Provee__Cod_d__440B1D61">
+            <End Role="Tb_Distrito" EntitySet="Tb_Distrito" />
+            <End Role="Tb_Proveedor" EntitySet="Tb_Proveedor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Tb_Orden___Cod_p__4316F928" Association="VentasLeonModel.FK__Tb_Orden___Cod_p__4316F928">
+            <End Role="Tb_Proveedor" EntitySet="Tb_Proveedor" />
+            <End Role="Tb_Orden_Compra" EntitySet="Tb_Orden_Compra" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Tb_Distrito">
+          <Key>
+            <PropertyRef Name="Cod_dis" />
+          </Key>
+          <Property Name="Cod_dis" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="Nom_dis" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="Cod_ven" Type="String" MaxLength="3" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Tb_Proveedor" Relationship="VentasLeonModel.FK__Tb_Provee__Cod_d__440B1D61" FromRole="Tb_Distrito" ToRole="Tb_Proveedor" />
+        </EntityType>
+        <EntityType Name="Tb_Orden_Compra">
+          <Key>
+            <PropertyRef Name="Num_oco" />
+          </Key>
+          <Property Name="Num_oco" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="Fec_oco" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Cod_prv" Type="String" Nullable="false" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="Fec_ate" Type="DateTime" Precision="3" />
+          <Property Name="Est_oco" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Tb_Proveedor" Relationship="VentasLeonModel.FK__Tb_Orden___Cod_p__4316F928" FromRole="Tb_Orden_Compra" ToRole="Tb_Proveedor" />
+        </EntityType>
+        <EntityType Name="Tb_Proveedor">
+          <Key>
+            <PropertyRef Name="Cod_prv" />
+          </Key>
+          <Property Name="Cod_prv" Type="String" Nullable="false" MaxLength="4" Unicode="true" FixedLength="false" />
+          <Property Name="Raz_soc_prv" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Dir_prv" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="Tel_prv" Type="String" MaxLength="8" Unicode="true" FixedLength="false" />
+          <Property Name="Cod_dis" Type="String" Nullable="false" MaxLength="3" Unicode="true" FixedLength="false" />
+          <Property Name="Rep_ven" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Tb_Distrito" Relationship="VentasLeonModel.FK__Tb_Provee__Cod_d__440B1D61" FromRole="Tb_Proveedor" ToRole="Tb_Distrito" />
+          <NavigationProperty Name="Tb_Orden_Compra" Relationship="VentasLeonModel.FK__Tb_Orden___Cod_p__4316F928" FromRole="Tb_Proveedor" ToRole="Tb_Orden_Compra" />
+        </EntityType>
+        <Association Name="FK__Tb_Provee__Cod_d__440B1D61">
+          <End Role="Tb_Distrito" Type="VentasLeonModel.Tb_Distrito" Multiplicity="1" />
+          <End Role="Tb_Proveedor" Type="VentasLeonModel.Tb_Proveedor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Distrito">
+              <PropertyRef Name="Cod_dis" />
+            </Principal>
+            <Dependent Role="Tb_Proveedor">
+              <PropertyRef Name="Cod_dis" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Tb_Orden___Cod_p__4316F928">
+          <End Role="Tb_Proveedor" Type="VentasLeonModel.Tb_Proveedor" Multiplicity="1" />
+          <End Role="Tb_Orden_Compra" Type="VentasLeonModel.Tb_Orden_Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tb_Proveedor">
+              <PropertyRef Name="Cod_prv" />
+            </Principal>
+            <Dependent Role="Tb_Orden_Compra">
+              <PropertyRef Name="Cod_prv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VentasLeonModelStoreContainer" CdmEntityContainer="VentasLeonEntities">
+          <EntitySetMapping Name="Tb_Distrito">
+            <EntityTypeMapping TypeName="VentasLeonModel.Tb_Distrito">
+              <MappingFragment StoreEntitySet="Tb_Distrito">
+                <ScalarProperty Name="Cod_dis" ColumnName="Cod_dis" />
+                <ScalarProperty Name="Nom_dis" ColumnName="Nom_dis" />
+                <ScalarProperty Name="Cod_ven" ColumnName="Cod_ven" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Orden_Compra">
+            <EntityTypeMapping TypeName="VentasLeonModel.Tb_Orden_Compra">
+              <MappingFragment StoreEntitySet="Tb_Orden_Compra">
+                <ScalarProperty Name="Num_oco" ColumnName="Num_oco" />
+                <ScalarProperty Name="Fec_oco" ColumnName="Fec_oco" />
+                <ScalarProperty Name="Cod_prv" ColumnName="Cod_prv" />
+                <ScalarProperty Name="Fec_ate" ColumnName="Fec_ate" />
+                <ScalarProperty Name="Est_oco" ColumnName="Est_oco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tb_Proveedor">
+            <EntityTypeMapping TypeName="VentasLeonModel.Tb_Proveedor">
+              <MappingFragment StoreEntitySet="Tb_Proveedor">
+                <ScalarProperty Name="Cod_prv" ColumnName="Cod_prv" />
+                <ScalarProperty Name="Raz_soc_prv" ColumnName="Raz_soc_prv" />
+                <ScalarProperty Name="Dir_prv" ColumnName="Dir_prv" />
+                <ScalarProperty Name="Tel_prv" ColumnName="Tel_prv" />
+                <ScalarProperty Name="Cod_dis" ColumnName="Cod_dis" />
+                <ScalarProperty Name="Rep_ven" ColumnName="Rep_ven" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

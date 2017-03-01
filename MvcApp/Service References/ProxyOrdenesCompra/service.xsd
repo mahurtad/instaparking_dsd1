@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/ServiciosPC4" />
+  <xs:element name="ListarOrdenes">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarOrdenesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ServiciosPC4" minOccurs="0" name="ListarOrdenesResult" nillable="true" type="q1:ArrayOfOrdenesCompraBe" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarOrdenesProveedor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CodPro" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarOrdenesProveedorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ServiciosPC4" minOccurs="0" name="ListarOrdenesProveedorResult" nillable="true" type="q2:ArrayOfOrdenesCompraBe" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarOrdenesEstado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarOrdenesEstadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ServiciosPC4" minOccurs="0" name="ListarOrdenesEstadoResult" nillable="true" type="q3:ArrayOfOrdenesCompraBe" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
